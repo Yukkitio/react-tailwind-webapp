@@ -1,40 +1,21 @@
 import React from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler,
-} from 'chart.js';
+import { useDarkMode } from '../../context/DarkModeContext'; // Assurez-vous d'avoir un contexte pour le mode sombre
 import { Line } from 'react-chartjs-2';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
-);
-
 export function LineChart({ data, title }) {
+  const { isDarkMode } = useDarkMode(); // Détection du mode sombre
+
   const chartData = {
     labels: data.map(d => d.label),
     datasets: [
       {
         label: 'Revenue',
         data: data.map(d => d.value),
-        borderColor: '#4F46E5',
-        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+        borderColor: isDarkMode ? '#A5B4FC' : '#4F46E5', // Couleurs en fonction du mode
+        backgroundColor: isDarkMode ? 'rgba(165, 180, 252, 0.1)' : 'rgba(79, 70, 229, 0.1)',
         tension: 0.4,
         fill: true,
-        pointBackgroundColor: '#4F46E5',
+        pointBackgroundColor: isDarkMode ? '#A5B4FC' : '#4F46E5',
         pointBorderColor: '#fff',
         pointBorderWidth: 2,
         pointRadius: 4,
@@ -49,6 +30,9 @@ export function LineChart({ data, title }) {
     plugins: {
       legend: {
         display: false,
+        labels: {
+          color: isDarkMode ? '#E5E7EB' : '#111827', // Texte du graphique
+        },
       },
       title: {
         display: true,
@@ -57,55 +41,34 @@ export function LineChart({ data, title }) {
           size: 16,
           weight: '600',
         },
-        padding: {
-          bottom: 20,
-        },
-        color: '#111827',
+        padding: { bottom: 20 },
+        color: isDarkMode ? '#E5E7EB' : '#111827',
       },
       tooltip: {
-        backgroundColor: '#fff',
-        titleColor: '#111827',
-        bodyColor: '#4B5563',
-        borderColor: '#E5E7EB',
+        backgroundColor: isDarkMode ? '#374151' : '#fff',
+        titleColor: isDarkMode ? '#D1D5DB' : '#111827',
+        bodyColor: isDarkMode ? '#9CA3AF' : '#4B5563',
+        borderColor: isDarkMode ? '#6B7280' : '#E5E7EB',
         borderWidth: 1,
-        padding: 12,
-        boxPadding: 6,
-        usePointStyle: true,
-        callbacks: {
-          title: context => `${context[0].label}`,
-          label: context => `Revenue: $${context.raw}`,
-        },
       },
     },
     scales: {
       x: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          color: '#6B7280',
-        },
+        grid: { display: false },
+        ticks: { color: isDarkMode ? '#9CA3AF' : '#6B7280' },
       },
       y: {
         beginAtZero: true,
-        grid: {
-          color: '#F3F4F6',
-        },
+        grid: { color: isDarkMode ? '#4B5563' : '#F3F4F6' },
         ticks: {
-          color: '#6B7280',
-          callback: value => `$${value}`,
+          color: isDarkMode ? '#9CA3AF' : '#6B7280',
+          callback: (value) => `$${value}`,
         },
       },
-    },
-    interaction: {
-      intersect: false,
-      mode: 'index',
     },
   };
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm h-[300px]">
-      <Line data={chartData} options={options} />
-    </div>
+    <Line data={chartData} options={options} />
   );
 }

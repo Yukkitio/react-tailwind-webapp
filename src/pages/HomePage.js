@@ -51,7 +51,7 @@ export function HomePage() {
                 <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">{stat.label}</p>
                 <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">{stat.value}</h3>
               </div>
-              <div className={`p-3 rounded-full ${stat.color} bg-opacity-10`}>
+              <div className={`px-3 pt-6 rounded-full ${stat.color} bg-opacity-10`}>
                 <stat.icon className={`h-6 w-6 ${stat.color}`} />
               </div>
             </div>

@@ -11,7 +11,7 @@ export function LoginForm({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsLoading(false);
     onLogin();
   };
@@ -21,12 +21,12 @@ export function LoginForm({ onLogin }) {
   };
 
   return (
-    <Card className="space-y-6 max-w-md mx-auto">
+    <Card className="max-w-md mx-auto p-8 bg-white bg-opacity-10 dark:bg-neutral-800 dark:bg-opacity-10 backdrop-blur-md border border-gray-200 border-opacity-20 dark:border-neutral-600 dark:border-opacity-20 rounded-2xl shadow-lg space-y-6">
       <div className="text-center">
-        <div className="mx-auto h-12 w-12 bg-indigo-100 dark:bg-indigo-600 rounded-full flex items-center justify-center">
-          <LogIn className="h-6 w-6 text-indigo-600 dark:text-indigo-200" />
+        <div className="mx-auto h-12 w-12 bg-indigo-100 dark:bg-indigo-500 bg-opacity-80 dark:bg-opacity-60 rounded-full flex items-center justify-center">
+          <LogIn className="h-6 w-6 text-indigo-600 dark:text-indigo-100" />
         </div>
-        <h2 className="mt-4 text-3xl font-bold text-gray-900 dark:text-white">Welcome back</h2>
+        <h2 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-100">Welcome back</h2>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Please sign in to your account</p>
       </div>
 
@@ -43,7 +43,7 @@ export function LoginForm({ onLogin }) {
               id="email"
               type="email"
               required
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-neutral-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors dark:bg-neutral-700 dark:placeholder-gray-400"
+              className="block w-full pl-10 pr-3 py-2 bg-white bg-opacity-30 dark:bg-neutral-800 dark:bg-opacity-30 backdrop-blur-lg border border-gray-300 dark:border-neutral-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors dark:placeholder-gray-400"
               placeholder="you@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -63,7 +63,7 @@ export function LoginForm({ onLogin }) {
               id="password"
               type={showPassword ? 'text' : 'password'}
               required
-              className="block w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-neutral-700 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors dark:bg-neutral-700 dark:placeholder-gray-400"
+              className="block w-full pl-10 pr-10 py-2 bg-white bg-opacity-30 dark:bg-neutral-800 dark:bg-opacity-30 backdrop-blur-lg border border-gray-300 dark:border-neutral-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors dark:placeholder-gray-400"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -85,7 +85,7 @@ export function LoginForm({ onLogin }) {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full flex justify-center py-2.5 px-4 rounded-lg shadow-sm text-sm font-medium text-white bg-indigo-600 bg-opacity-80 hover:bg-opacity-90 dark:bg-indigo-500 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? (
             <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -100,7 +100,7 @@ export function LoginForm({ onLogin }) {
         <button
           type="button"
           onClick={handleDebugLogin}
-          className="w-full flex justify-center py-2.5 px-4 border border-indigo-200 dark:border-indigo-700 rounded-lg shadow-sm text-sm font-medium text-indigo-600 dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-900 hover:bg-indigo-100 dark:hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
+          className="w-full flex justify-center py-2.5 px-4 border border-indigo-200 dark:border-indigo-700 rounded-lg shadow-sm text-sm font-medium text-indigo-600 dark:text-indigo-300 bg-indigo-50 bg-opacity-20 backdrop-blur-lg dark:bg-indigo-900 hover:bg-indigo-100 dark:hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors"
         >
           Debug Login
         </button>

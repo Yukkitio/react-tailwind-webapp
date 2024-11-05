@@ -8,11 +8,12 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useDarkMode } from '../../context/DarkModeContext';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 export function LineChart({ data, title }) {
   const { isDarkMode } = useDarkMode();
@@ -26,7 +27,7 @@ export function LineChart({ data, title }) {
         borderColor: isDarkMode ? '#A5B4FC' : '#4F46E5',
         backgroundColor: isDarkMode ? 'rgba(165, 180, 252, 0.1)' : 'rgba(79, 70, 229, 0.1)',
         tension: 0.4,
-        fill: true,
+        fill: true, // Activer le remplissage
         pointBackgroundColor: isDarkMode ? '#A5B4FC' : '#4F46E5',
         pointBorderColor: '#fff',
         pointBorderWidth: 2,

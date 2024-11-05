@@ -1,9 +1,9 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Filler } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { useDarkMode } from '../../context/DarkModeContext';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Filler);
 
 export function PieChart({ data, title }) {
   const { isDarkMode } = useDarkMode();
@@ -34,9 +34,7 @@ export function PieChart({ data, title }) {
           usePointStyle: true,
           pointStyle: 'circle',
           padding: 20,
-          font: {
-            size: 12,
-          },
+          font: { size: 12 },
           color: isDarkMode ? '#E5E7EB' : '#111827',
         },
       },

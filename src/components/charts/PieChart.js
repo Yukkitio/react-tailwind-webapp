@@ -1,12 +1,12 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { useDarkMode } from '../../context/DarkModeContext'; // Assurez-vous d'avoir un contexte pour le mode sombre
+import { useDarkMode } from '../../context/DarkModeContext';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function PieChart({ data, title }) {
-  const { isDarkMode } = useDarkMode(); // Détection du mode sombre
+  const { isDarkMode } = useDarkMode();
 
   const chartData = {
     labels: data.map(d => d.label),
@@ -14,7 +14,7 @@ export function PieChart({ data, title }) {
       {
         data: data.map(d => d.value),
         backgroundColor: isDarkMode
-          ? data.map(d => d.darkColor || d.color) // Utilisation de `darkColor` si fourni
+          ? data.map(d => d.darkColor || d.color)
           : data.map(d => d.color),
         borderColor: isDarkMode
           ? data.map(d => d.darkColor || d.color)
@@ -37,7 +37,7 @@ export function PieChart({ data, title }) {
           font: {
             size: 12,
           },
-          color: isDarkMode ? '#E5E7EB' : '#111827', // Couleur de la légende
+          color: isDarkMode ? '#E5E7EB' : '#111827',
         },
       },
       title: {
@@ -48,7 +48,7 @@ export function PieChart({ data, title }) {
           weight: '600',
         },
         padding: { bottom: 20 },
-        color: isDarkMode ? '#E5E7EB' : '#111827', // Couleur du titre
+        color: isDarkMode ? '#E5E7EB' : '#111827',
       },
       tooltip: {
         backgroundColor: isDarkMode ? '#374151' : '#fff',

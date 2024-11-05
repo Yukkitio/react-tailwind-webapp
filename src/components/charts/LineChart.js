@@ -1,9 +1,21 @@
 import React from 'react';
-import { useDarkMode } from '../../context/DarkModeContext'; // Assurez-vous d'avoir un contexte pour le mode sombre
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useDarkMode } from '../../context/DarkModeContext';
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export function LineChart({ data, title }) {
-  const { isDarkMode } = useDarkMode(); // Détection du mode sombre
+  const { isDarkMode } = useDarkMode();
 
   const chartData = {
     labels: data.map(d => d.label),
@@ -11,7 +23,7 @@ export function LineChart({ data, title }) {
       {
         label: 'Revenue',
         data: data.map(d => d.value),
-        borderColor: isDarkMode ? '#A5B4FC' : '#4F46E5', // Couleurs en fonction du mode
+        borderColor: isDarkMode ? '#A5B4FC' : '#4F46E5',
         backgroundColor: isDarkMode ? 'rgba(165, 180, 252, 0.1)' : 'rgba(79, 70, 229, 0.1)',
         tension: 0.4,
         fill: true,
@@ -31,7 +43,7 @@ export function LineChart({ data, title }) {
       legend: {
         display: false,
         labels: {
-          color: isDarkMode ? '#E5E7EB' : '#111827', // Texte du graphique
+          color: isDarkMode ? '#E5E7EB' : '#111827',
         },
       },
       title: {

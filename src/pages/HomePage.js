@@ -61,10 +61,10 @@ export function HomePage() {
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        <Card className="lg:col-span-2">
+        <Card className="lg:col-span-2 h-[300px]">
           <LineChart data={salesData} title="Revenue Trend" />
         </Card>
-        <Card>
+        <Card className="h-[300px]">
           <PieChart data={marketShareData} title="Market Share" />
         </Card>
       </section>

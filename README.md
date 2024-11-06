@@ -25,6 +25,11 @@ Une application de tableau de bord construite avec React, Tailwind CSS, et des b
      npm install react-chartjs-2 chart.js
      ```
 
+    - **Tableau** : [react-data-table-component](https://github.com/jbetancur/react-data-table-component#readme) et [DataTable.js](https://www.react-data-table-component.org/)
+      ```bash
+      npm install react-data-table-component
+      ```
+
 ## Scripts
 
 - **Démarrer le projet en mode développement** :

@@ -2,6 +2,17 @@
   { "id": "#12345", "customer": "John Doe", "status": "Delivered", "amount": "$234.50" },
   { "id": "#12346", "customer": "Jane Smith", "status": "Pending", "amount": "$125.99" },
   { "id": "#12347", "customer": "Bob Wilson", "status": "Processing", "amount": "$599.99" },
-  { "id": "#12348", "customer": "Alice Brown", "status": "Delivered", "amount": "$99.99" }
+  { "id": "#12348", "customer": "Alice Brown", "status": "Delivered", "amount": "$99.99" },
+  { "id": "#12349", "customer": "Michael Johnson", "status": "Cancelled", "amount": "$0.00" },
+  { "id": "#12350", "customer": "Emily Davis", "status": "Pending", "amount": "$150.75" },
+  { "id": "#12351", "customer": "David Martinez", "status": "Delivered", "amount": "$85.20" },
+  { "id": "#12352", "customer": "Sarah Lee", "status": "Processing", "amount": "$200.00" },
+  { "id": "#12353", "customer": "Chris Anderson", "status": "Delivered", "amount": "$300.00" },
+  { "id": "#12354", "customer": "Laura Taylor", "status": "Pending", "amount": "$400.50" },
+  { "id": "#12355", "customer": "Daniel Harris", "status": "Processing", "amount": "$250.00" },
+  { "id": "#12356", "customer": "Karen Clark", "status": "Delivered", "amount": "$75.00" },
+  { "id": "#12357", "customer": "James Lewis", "status": "Cancelled", "amount": "$0.00" },
+  { "id": "#12358", "customer": "Patricia Walker", "status": "Pending", "amount": "$120.00" },
+  { "id": "#12359", "customer": "Robert Hall", "status": "Processing", "amount": "$180.00" },
+  { "id": "#12360", "customer": "Linda Allen", "status": "Delivered", "amount": "$95.00" }
 ]
-  

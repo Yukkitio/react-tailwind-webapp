@@ -1,24 +1,15 @@
-const colors = require('tailwindcss/colors');
+// tailwind.config.js
+const themeColors = require('./src/theme/colors');
 
 module.exports = {
-  darkMode: 'class', // Active le mode sombre
-  content: [
-    './src/**/*.{js,jsx,ts,tsx}', // Assure que Tailwind détecte toutes les classes utilisées dans le projet
-  ],
+  darkMode: 'class',
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      colors: {
-        primary: colors.indigo, // Définit la couleur principale
-        secondary: colors.purple, // Définit une couleur secondaire
-        accent: colors.pink, // Accentuation (ex: boutons d'action)
-        neutral: colors.gray, // Couleurs neutres
-        success: colors.green, // Couleur de succès
-        warning: colors.yellow, // Couleur de mise en garde
-        danger: colors.red, // Couleur d'erreur ou de danger
-      },
+      colors: themeColors,
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // Utilisation d'une police sans-serif (peut être personnalisée)
-        heading: ['Poppins', 'sans-serif'], // Option pour une police de titres
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
       },
       boxShadow: {
         'inner-sm': 'inset 0 1px 2px rgba(0, 0, 0, 0.05)',

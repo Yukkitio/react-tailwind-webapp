@@ -54,16 +54,12 @@ export function DataTableComponent({ title, columns, data }) {
     <div className="relative overflow-x-auto">
       {/* Titre avec effet d'ombre */}
       <div
-        className={`flex items-center justify-between p-2 ${
+        className={`flex items-center justify-between p-3 ${
           isDarkMode ? 'bg-neutral-900 border-neutral-700' : 'bg-neutral-100 border-neutral-300'
-        } border rounded-lg`}
+        } border-t-2 border-r-2 border-l-2 rounded-t-lg`}
       >
         {title && (
-          <h2
-            className={`pl-2 text-lg font-semibold ${
-              isDarkMode ? 'text-neutral-200' : 'text-neutral-900'
-            }`}
-          >
+          <h2 className={`pl-2 text-lg font-semibold ${isDarkMode ? 'text-neutral-200' : 'text-neutral-900'}`}>
             {title}
           </h2>
         )}
@@ -78,15 +74,8 @@ export function DataTableComponent({ title, columns, data }) {
         />
       </div>
 
-      {/* Espacement entre le titre et le tableau */}
-      <div className="mt-2" />
-
       {/* Conteneur de la table avec effet d'ombre, bordure arrondie et overflow caché */}
-      <div
-        className={`rounded-lg overflow-hidden ${
-          isDarkMode ? 'border border-neutral-700' : 'border border-neutral-300'
-        }`}
-      >
+      <div className={`rounded-b-lg overflow-hidden border-2 ${isDarkMode ? 'border-neutral-700' : 'border-neutral-300'}`}>
         <DataTable
           columns={columns}
           data={data}

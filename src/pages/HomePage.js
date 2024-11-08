@@ -20,11 +20,11 @@ const StatCard = ({ icon, label, value, color, change }) => {
           <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">{label}</p>
           <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">{value}</h3>
         </div>
-        <div className={`px-3 pt-6 rounded-full ${color} bg-opacity-10`}>
-          {IconComponent && <IconComponent className={`h-6 w-6 ${color}`} />}
+        <div className={`px-3 pt-6 rounded-full text-${color}-600 bg-opacity-10`}>
+          {IconComponent && <IconComponent className={`h-6 w-6 text-${color}-600`} />}
         </div>
       </div>
-      <p className={`text-sm mt-2 ${color}`}>{change} from last month</p>
+      <p className={`text-sm mt-2 text-${color}-600`}>{change} from last month</p>
     </Card>
   );
 };

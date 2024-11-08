@@ -1,7 +1,6 @@
 [
-	{ "icon": "DollarSign", "label": "Revenue", "value": "$24,567", "change": "+12.5%", "color": "text-green-600" },
-	{ "icon": "Users", "label": "Active Users", "value": "1,234", "change": "+8.2%", "color": "text-blue-600" },
-	{ "icon": "ShoppingCart", "label": "Orders", "value": "456", "change": "+5.7%", "color": "text-purple-600" },
-	{ "icon": "Package", "label": "Products", "value": "789", "change": "+3.4%", "color": "text-orange-600" }
+  { "icon": "DollarSign", "label": "Revenue", "value": "$24,567", "change": "+12.5%", "color": "green" },
+  { "icon": "Users", "label": "Active Users", "value": "1,234", "change": "+8.2%", "color": "blue" },
+  { "icon": "ShoppingCart", "label": "Orders", "value": "456", "change": "+5.7%", "color": "purple" },
+  { "icon": "Package", "label": "Products", "value": "789", "change": "+3.4%", "color": "orange" }
 ]
-  

@@ -1,12 +1,19 @@
-// tailwind.config.js
-const themeColors = require('./src/theme/colors');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   darkMode: 'class',
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
-      colors: themeColors,
+      colors: {
+        primary: colors.indigo,
+        secondary: colors.purple,
+        accent: colors.pink,
+        neutral: colors.gray,
+        success: colors.green,
+        warning: colors.yellow,
+        danger: colors.red,
+      },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         heading: ['Poppins', 'sans-serif'],
@@ -24,10 +31,17 @@ module.exports = {
       },
       borderRadius: {
         'md': '0.375rem',
-        'lg': '0.5rem',
-        'xl': '0.75rem',
       },
     },
   },
   plugins: [],
+  safelist: [
+    'text-primary-600',
+    'text-secondary-600',
+    'text-accent-600',
+    'text-neutral-600',
+    'text-success-600',
+    'text-warning-600',
+    'text-danger-600',
+  ],
 };

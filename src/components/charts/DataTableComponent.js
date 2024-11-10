@@ -1,12 +1,33 @@
 import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { useDarkMode } from '../../context/DarkModeContext';
-import colors from '../../theme/colors'; // Renommer cette importation pour éviter le conflit
+import { Plus } from 'lucide-react';
 
 export function DataTableComponent({ title, columns, data }) {
   const [filterText, setFilterText] = useState('');
   const { isDarkMode } = useDarkMode();
-  const themeColors = isDarkMode ? colors.darkMode : colors.lightMode; // Utiliser `colors` au lieu de `themeColors`
+
+  const darkModeColors = {
+    background: '#1f2937',
+    text: '#e5e7eb',
+    border: '#374151',
+    hoverBackground: '#4b5563',
+    paginationBackground: '#111827',
+    paginationHoverBackground: '#4b5563',
+    paginationDisabledColor: '#6b7280',
+  };
+
+  const lightModeColors = {
+    background: '#ffffff',
+    text: '#111827',
+    border: '#d1d5db',
+    hoverBackground: '#f3f4f6',
+    paginationBackground: '#f3f4f6',
+    paginationHoverBackground: '#d1d5db',
+    paginationDisabledColor: '#9ca3af',
+  };
+
+  const colors = isDarkMode ? darkModeColors : lightModeColors;
 
   const customStyles = {
     table: {
@@ -16,45 +37,65 @@ export function DataTableComponent({ title, columns, data }) {
     },
     headRow: {
       style: {
-        backgroundColor: themeColors.headerBackground,
-        borderBottom: `1px solid ${themeColors.headerBorder}`,
+        backgroundColor: colors.paginationBackground,
+        borderBottom: `1px solid ${colors.border}`,
       },
     },
     headCells: {
       style: {
         fontSize: '0.875rem',
         fontWeight: '600',
-        color: themeColors.text,
+        color: colors.text,
       },
     },
     rows: {
       style: {
-        backgroundColor: themeColors.background,
-        color: themeColors.text,
+        backgroundColor: colors.background,
+        color: colors.text,
       },
       highlightOnHoverStyle: {
-        backgroundColor: themeColors.hoverBackground,
-        borderTop: `1px solid ${themeColors.border}`,
-        borderBottom: `1px solid ${themeColors.border}`,
-        color: themeColors.text,
+        backgroundColor: colors.hoverBackground,
+        borderTop: `1px solid ${colors.border}`,
+        borderBottom: `1px solid ${colors.border}`,
+        color: colors.text,
         outline: 'none',
       },
     },
     pagination: {
       style: {
-        backgroundColor: themeColors.paginationBackground,
-        color: themeColors.paginationText,
+        backgroundColor: colors.paginationBackground,
+        color: colors.text,
         fontSize: '0.75rem',
         minHeight: '52px',
+        justifyContent: 'space-between',
+      },
+      pageButtonsStyle: {
+        borderRadius: '50%',
+        margin: '0 4px',
+        color: colors.text,
+        fill: colors.text,
+        backgroundColor: colors.paginationBackground,
+        '&:hover': {
+          backgroundColor: colors.paginationHoverBackground,
+        },
+        '&:disabled': {
+          cursor: 'not-allowed',
+          color: colors.paginationDisabledColor,
+          fill: colors.paginationDisabledColor,
+        },
       },
     },
   };
 
+  const paginationComponentOptions = {
+    rowsPerPageText: '',
+    rangeSeparatorText: '',
+    noRowsPerPage: true,
+  };
+
   return (
     <div className="relative overflow-x-auto">
-      {/* Titre avec effet d'ombre */}
-      <div
-        className={`flex items-center justify-between p-3 ${
+      <div className={`flex items-center justify-between p-3 ${
           isDarkMode ? 'bg-neutral-900 border-neutral-700' : 'bg-neutral-100 border-neutral-300'
         } border-t-2 border-r-2 border-l-2 rounded-t-lg`}
       >
@@ -74,7 +115,6 @@ export function DataTableComponent({ title, columns, data }) {
         />
       </div>
 
-      {/* Conteneur de la table avec effet d'ombre, bordure arrondie et overflow caché */}
       <div className={`rounded-b-lg overflow-hidden border-2 ${isDarkMode ? 'border-neutral-700' : 'border-neutral-300'}`}>
         <DataTable
           columns={columns}
@@ -83,6 +123,20 @@ export function DataTableComponent({ title, columns, data }) {
           selectableRows
           highlightOnHover
           customStyles={customStyles}
+          paginationPerPage={10}
+          paginationComponentOptions={paginationComponentOptions}
+          selectableRowsComponent={props => (
+            <div className="checkbox-container">
+              <input
+                type="checkbox"
+                {...props}
+                className="checkbox"
+              />
+              {props.checked && (
+                <Plus className="checkbox-icon" />
+              )}
+            </div>
+          )}
         />
       </div>
     </div>

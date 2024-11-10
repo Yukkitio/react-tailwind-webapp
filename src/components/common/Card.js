@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertCircle } from 'lucide-react';
+import ErrorIcon from '../icons/ErrorIcon';
 
 export function Card({ children, className = '', loading = false, error = false, errorMessage = 'Oups, something is missing.', type = 'Text' }) {
   const renderSkeleton = () => {
@@ -38,7 +38,7 @@ export function Card({ children, className = '', loading = false, error = false,
         renderSkeleton()
       ) : error ? (
         <div className="flex flex-col items-center justify-center h-full text-center text-gray-400 dark:text-gray-500">
-          <AlertCircle className="w-10 h-10 mb-2" />
+          <ErrorIcon className="w-10 h-10 mb-2" />
           <p className="font-semibold">{errorMessage}</p>
         </div>
       ) : (

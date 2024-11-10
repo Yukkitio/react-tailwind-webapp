@@ -31,7 +31,7 @@ const fetchDataWithFallback = async (endpoint, defaultData, simulate = true, del
 };
 
 export const fetchStatsData = (simulate = true) => fetchDataWithFallback('/stats', statsData, simulate, 0);
-export const fetchSalesData = (simulate = true) => fetchDataWithFallback('/sales', salesData, simulate, 500);
+export const fetchSalesData = (simulate = false) => fetchDataWithFallback('/sales', salesData, simulate, 500);
 export const fetchMarketShareData = (simulate = true) => fetchDataWithFallback('/market-share', marketShareData, simulate, 1500);
 export const fetchRecentOrders = (simulate = true) => fetchDataWithFallback('/recent-orders', recentOrders, simulate, 3000);
 

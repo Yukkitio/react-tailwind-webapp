@@ -58,7 +58,7 @@
     bottom: -150px;
 }
 
-/* Configuration des cercles */
+/* Configuration des carrés/cercles */
 .circles li:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
 .circles li:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; animation-duration: 12s; }
 .circles li:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
@@ -84,14 +84,8 @@
 }
 /* End Background Animation */
 
-/* Supprimer le border-radius pour les divs générées par DataTable */
-/* Aucune autre solution trouvé */
-.hZZlND, .rdt_Table {
-  border-radius: 0 !important;
-}
-
-/* Style de base pour rendre la checkbox ronde */
-.rdt_Table input[type="checkbox"] {
+/* Styles pour les checkboxes */
+.checkbox {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
@@ -100,25 +94,25 @@
     outline: none;
     cursor: pointer;
     transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-/* Style lorsqu'elle est cochée */
-.rdt_Table input[type="checkbox"]:checked {
+  }
+  
+  .checkbox:checked {
     background-color: #6366f1;
     border-color: #6366f1;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-}
-
-/* Icône X à l'intérieur de la checkbox cochée */
-.rdt_Table input[type="checkbox"]:checked::after {
-    content: '✕';
-    color: white;
-    font-size: 0.5rem;
+  }
+  
+  .checkbox-icon {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -52%);
-}
-
-  
-  
+    width: 0.8rem;
+    height: 0.8rem;
+    color: white;
+    pointer-events: none;
+    transform: rotate(45deg);
+  }

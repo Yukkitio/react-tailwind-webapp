@@ -1,7 +1,7 @@
 [
-	{ "label": "Product A", "value": 35, "color": "#4F46E5" },
-	{ "label": "Product B", "value": 25, "color": "#10B981" },
-	{ "label": "Product C", "value": 20, "color": "#F59E0B" },
-	{ "label": "Others", "value": 20, "color": "#6B7280" }
+  { "label": "Product A", "value": 35, "color": "#4F46E5" },
+  { "label": "Product B", "value": 25, "color": "#10B981" },
+  { "label": "Product C", "value": 20, "color": "#F59E0B" },
+  { "label": "Others", "value": 20, "color": "#6B7280" }
 ]
   

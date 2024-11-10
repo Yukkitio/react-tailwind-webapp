@@ -8,23 +8,6 @@ import { DataTableComponent } from '../components/charts/DataTableComponent';
 import { useFetchData } from '../hook/useFetchData';
 import { fetchStatsData, fetchSalesData, fetchMarketShareData, fetchRecentOrders } from '../api';
 
-const StatCard = ({ icon, label, value, color, change }) => {
-  const IconComponent = Icons[icon];
-  return (
-    <>
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">{label}</p>
-          <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">{value}</h3>
-        </div>
-        <div className={`px-3 pt-6 rounded-full text-${color}-600 bg-opacity-10`}>
-          {IconComponent && <IconComponent className={`h-6 w-6 text-${color}-600`} />}
-        </div>
-      </div><p className={`text-sm mt-2 text-${color}-600`}>{change} from last month</p>
-    </>
-  );
-};
-
 export function HomePage() {
   const { data: statsData, loading: loadingStats, error: errorStats } = useFetchData(fetchStatsData);
   const { data: salesData, loading: loadingSales, error: errorSales } = useFetchData(fetchSalesData);
@@ -50,17 +33,23 @@ export function HomePage() {
 
       {/* Stat Cards */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        {(loadingStats || errorStats
-          ? [...Array(4)].map((_, i) => (
-              <Card key={i} loading={loadingStats} error={errorStats} type="Text">
-                <StatCard {...statsData[i]} />
-              </Card>
-            ))
-          : statsData.map((stat, i) => (
-              <Card key={i} type="Text">
-                <StatCard {...stat} />
-              </Card>
-            )))}
+        {(loadingStats || errorStats ? [...Array(4)] : statsData).map((stat, i) => {
+          const IconComponent = Icons[stat?.icon];
+          return (
+            <Card key={i} loading={loadingStats} error={errorStats} type="Text">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-1">{stat?.label}</p>
+                  <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">{stat?.value}</h3>
+                </div>
+                <div className={`px-3 pt-6 rounded-full text-${stat?.color}-600 bg-opacity-10`}>
+                  {IconComponent && <IconComponent className={`h-6 w-6 text-${stat?.color}-600`} />}
+                </div>
+              </div>
+              <p className={`text-sm mt-2 text-${stat?.color}-600`}>{stat?.change} from last month</p>
+            </Card>
+          );
+        })}
       </section>
 
       {/* Sales and Market Share Charts */}

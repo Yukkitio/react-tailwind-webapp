@@ -1,4 +1,3 @@
-// src/components/common/BackgroundAnimed.js
 import React from 'react';
 
 export function BackgroundAnimed({ children, className = '' }) {

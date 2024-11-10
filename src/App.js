@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { HomePage } from './pages/HomePage';
+import { AnalyticsPage } from './pages/AnalyticsPage';
 import { Settings } from './pages/SettingsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
@@ -36,6 +37,7 @@ function App() {
         <BackgroundMain>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/analytics" element={<AnalyticsPage />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<NotFoundPage />} /> {/* Route 404 */}
           </Routes>

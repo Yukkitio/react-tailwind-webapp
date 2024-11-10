@@ -3,6 +3,7 @@ import statsData from './components/data/statsData.json';
 import salesData from './components/data/salesData.json';
 import marketShareData from './components/data/marketShareData.json';
 import recentOrders from './components/data/recentOrders.json';
+import analyticsData from './components/data/analyticsData.json'; // Importer les données analytiques
 
 const api = axios.create({
   baseURL: 'http://localhost:5000/api',
@@ -31,8 +32,11 @@ const fetchDataWithFallback = async (endpoint, defaultData, simulate = true, del
 };
 
 export const fetchStatsData = (simulate = true) => fetchDataWithFallback('/stats', statsData, simulate, 0);
-export const fetchSalesData = (simulate = false) => fetchDataWithFallback('/sales', salesData, simulate, 500);
+export const fetchSalesData = (simulate = true) => fetchDataWithFallback('/sales', salesData, simulate, 500);
 export const fetchMarketShareData = (simulate = true) => fetchDataWithFallback('/market-share', marketShareData, simulate, 1500);
 export const fetchRecentOrders = (simulate = true) => fetchDataWithFallback('/recent-orders', recentOrders, simulate, 3000);
+export const fetchAnalyticsData = (simulate = true) => fetchDataWithFallback('/analytics', analyticsData, simulate, 1000); // Ajouter cette ligne
+
+export const deleteAnalyticsData = (id) => api.delete(`/analytics/${id}`);
 
 export default api;

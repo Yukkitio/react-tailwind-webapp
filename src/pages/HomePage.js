@@ -7,6 +7,7 @@ import { Card } from '../components/common/Card';
 import { DataTableComponent } from '../components/charts/DataTableComponent';
 import { useFetchData } from '../hook/useFetchData';
 import { fetchStatsData, fetchSalesData, fetchMarketShareData, fetchRecentOrders } from '../api';
+import { ActionButtons } from '../components/common/ActionButtons';
 
 export function HomePage() {
   const { data: statsData, loading: loadingStats, error: errorStats } = useFetchData(fetchStatsData);
@@ -14,11 +15,30 @@ export function HomePage() {
   const { data: marketShareData, loading: loadingMarketShare, error: errorMarketShare } = useFetchData(fetchMarketShareData);
   const { data: recentOrders, loading: loadingOrders, error: errorOrders } = useFetchData(fetchRecentOrders);
 
+  const handleInfo = (row) => {
+    console.log(`Info:`, row);
+  };
+  
   const orderColumns = [
-    { name: 'Order ID', selector: row => row.id, sortable: true },
+    { name: 'ID', selector: row => row.id, omit: true },
     { name: 'Customer', selector: row => row.customer, sortable: true },
     { name: 'Status', selector: row => row.status, sortable: true },
     { name: 'Amount', selector: row => row.amount, sortable: true },
+    {
+      name: 'Actions',
+      cell: row => (
+        <ActionButtons
+          row={row}
+          showEdit={false}
+          showDelete={false}
+          showInfo={true}
+          onInfo={() => handleInfo(row)}
+        />
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
   ];
 
   return (
